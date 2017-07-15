@@ -1,6 +1,92 @@
-\section{Vorgehen}
+\section{Astor \-- GenProg}
 %
 \begin{frame}{}
-\huge{Vorgehen}
+	\begin{center}
+		\huge{Astor \-- GenProg}
+	\end{center}
 \end{frame}
+%
+\begin{frame}{Astor}
+	\begin{itemizes}{1em}
+		\item Wendet eins der drei Modi an
+		\begin{itemizes}{0.2em}
+			\item jGenProg2
+			\item jKali
+			\item jMutRepair
+		\end{itemizes}
+		\item Unser Fokus wurde auf GenProg gelegt
+	\end{itemizes}
+\end{frame}
+%
+\begin{frame}{Kali}
+	\begin{itemizes}{1em}
+		\item Zielt auf schwache Testsuits
+		\item Vorgehen bei der "Reperatur":
+		\begin{itemizes}{0.2em}
+			\item löschen von Zeilen
+			\item überspringen von Zeilen
+		\end{itemizes}
+	\end{itemizes}
+\end{frame}
+%
+\begin{frame}{MutRepair}
+	\begin{itemizes}{1em}
+		\item Mutiert die Konditionen von if-Statements
+		\item Hat drei Arten der Mutation:
+		\begin{itemizes}{0.2em}
+			\item Relations Operationen
+			\item Logische Operationen
+			\item Negation
+		\end{itemizes}
+	\end{itemizes}
+\end{frame}
+%
+\begin{frame}{GenProg}
+	\begin{itemizes}{1em}
+		\item Idee: Reparatur durch Evolution
+		\begin{itemizes}{1em}
+			\item Nutzung von generischer Programmierung
+			\item gezielte, zufällige Mutation
+		\end{itemizes}
+	\end{itemizes}
+\end{frame}
+%
+\begin{frame}{Vorgehen}
+	\begin{itemizes}{1em}
+		\item Fehlerlokalisierung
+		\begin{itemizes}{0.5em}
+			\item Erstellung eines abstrakten Syntax Baums
+			\item Durchlaufen der Testfälle
+			\item Fehlerbestimmung anhand von Pfaden mit negativen Testfällen
+		\end{itemizes}
+		\item Patch-Generierung
+		\begin{itemizes}{0.5em}
+			\item Mutation von Crossovervarianten
+			\item Solange, bis ein optimaler Kandidat gefunden wurde
+		\end{itemizes}
+		\item Validierung
+		\begin{itemizes}{0.5em}
+			\item Prüfen des Testsuits
+		\end{itemizes}
+	\end{itemizes}
+\end{frame}
+%
+
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
+%
 %
