@@ -1,0 +1,49 @@
+\documentclass{beamer}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{xcolor,mathrsfs,url}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{ulem}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{dsfont}
+\usepackage{makecell}
+\usepackage{wasysym}
+
+\lstset{
+	escapechar=\%,
+	language=Tex,
+	tabsize=2,
+	numbers=left,
+	frame=tB,
+	framerule=0.1pt,
+	basicstyle=\footnotesize
+}
+
+\usepackage{metricsbeamer} % using the metric beamer style
+
+% The command to define a subsection is '\subsec{}' and NOT '\subsection'.
+% This code generates the bar. Don't edit.
+\newcommand{\midbarnew}{}
+\newcommand{\subsec}[1]
+{
+	\ifthenelse{\equal{#1}{}}
+	{\renewcommand{\midbarnew}{} \subsection{}}
+	{\renewcommand{\midbarnew}{ $\mid$ } \subsection{#1}}
+}
+
+% change the pictures here, if necessary. logobig and logosmall are the internal names
+% for the pictures: do not modify them, just change "hulogo" and "logo". Pictures must be 
+% supplied as JPEG, PNG or PDF
+%########################################
+
+\def\titlescale{1.0}
+
+\input{./Kapitel/00_preamble/cmd.tex}

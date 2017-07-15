@@ -1,0 +1,25 @@
+\frametitle{}
+\lstset{
+language=C,
+tabsize=2,
+numbers=left,
+caption={Beispielprogramm},
+frame=tB,
+framerule=0.1pt,
+}
+\begin{lstlisting}[escapeinside={(*}{*)}]
+int main() {
+int a, b, c, smallest = 0;
+printf("Please enter 3 numbers>");
+scanf("%d%d%d", &a, &b, &c);
+if(a <= b && a <= c) {
+smallest = a;
+}else if(b <= a && b <= c) {
+smallest = b;
+}else{
+smallest = c;
+}
+printf("%d ist der niedrigste Wert!", smallest);
+return 0;
+}
+\end{lstlisting}

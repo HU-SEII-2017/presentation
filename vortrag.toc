@@ -1,0 +1,5 @@
+\select@language {english}
+\beamer@sectionintoc {3}{Idee}{3}{0}{1}
+\beamer@sectionintoc {4}{Vorgehen}{4}{0}{2}
+\beamer@sectionintoc {5}{Astor \-- GenProg}{5}{0}{3}
+\beamer@sectionintoc {6}{Ergebnisse}{6}{0}{4}
