@@ -22,20 +22,91 @@
 \end{frame}
 %
 \begin{frame}{}
-	\bildc{0.5}{img/astorDef4j_results.png}{Entnommen aus \cite{MM16}}
+	\bildc{1}{img/astorDef4j_results.png}{Entnommen aus \cite{MM16}}
 \end{frame}
 %
-\begin{frame}{Was dann passiert weiß noch keiner.}
+\begin{frame}{Erste Überlegung}
 	\begin{itemizes}{1em}
-		\item ...
-		\item ...
-		\item ...
+		\item Anwendung auf das Paket Lang
+		\item Höchste Wahrscheinlichkeit einen Fix zu finden
+		\item Leider nicht erfolgreich gewesen
 	\end{itemizes}
 \end{frame}
 %
-
+\begin{frame}{Nächste Überlegung}
+\begin{itemizes}{1em}
+	\item Durchsuchen aller Fehlerhaften Programme
+	\item Überprüfung der fehlerhaften Testfälle
+	\item Kein Testfall gefunden, welcher den Patch validieren würde
+\end{itemizes}
+\end{frame}
+%
+\begin{frame}{Validierung}
+\begin{itemizes}{1em}
+	\item Entwicklung eines eigenen Testprogramms
+	\item Welches den Patch validieren kann
+\end{itemizes}
+\end{frame}
+%
+\begin{frame}[fragile=singleslide]{}
+\begin{minipage}{27em}
+	\begin{lstlisting}[
+	%	mathescape=true,
+	escapeinside={(*}{*)}, 
+	language=C,
+	]
+public Language getLanguage(String lang) {
+	if(lang.equals("C"))
+		return Language.C;
+	else if(lang.equals("CPP"))
+		return Language.CPP;
+	else
+		return Language.JAVA;
+}
+	\end{lstlisting}
+\end{minipage}
+\begin{minipage}{27em}
+	\begin{lstlisting}[
+	%	mathescape=true,
+	escapeinside={(*}{*)}, 
+	language=C,
+	]
+public Language getLanguageWorking(String lang) {
+	if(lang.equals("C"))
+		return Language.C;
+	else if(lang.equals("CPP"))
+		return Language.CPP;
+	else if(lang.equals("JAVA"))
+		return Language.JAVA;
+	else
+		return Language.PYTHON;
+}
+	\end{lstlisting}
+\end{minipage}
+\end{frame}
+%
+\begin{frame}[fragile=singleslide]{Von Astor generierter Patch}
+	\begin{lstlisting}[
+	%	mathescape=true,
+	escapeinside={(*}{*)}, 
+	language=C,
+	]
+	public Language getLanguage(String lang) {
+		if(lang.equals("C"))
+			return Language.C;
+		else if(lang.equals("CPP"))
+			return Language.CPP;
+		else if(lang.equals("JAVA"))
+			return Language.JAVA;
+		else
+			return Language.PYTHON;
+	}
+	\end{lstlisting}
+\end{frame}
+%
 \begin{frame}{Quellen}
 	\bibliography{ref}
+	\nocite{*}
 	\bibliographystyle{alpha}
 \end{frame}
 %
