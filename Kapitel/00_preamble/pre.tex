@@ -17,6 +17,17 @@
 \usepackage{makecell}
 \usepackage{wasysym}
 
+\usepackage{listings}
+\lstdefinestyle{customjava}{
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange},
+}
+
+\lstset{escapechar=@,style=customjava}
+
 \lstset{
 	escapechar=\%,
 	language=Tex,
@@ -26,6 +37,8 @@
 	framerule=0.1pt,
 	basicstyle=\footnotesize
 }
+
+\usepackage[linesnumbered,ruled]{algorithm2e}
 
 \usepackage{metricsbeamer} % using the metric beamer style
 

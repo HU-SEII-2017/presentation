@@ -6,11 +6,171 @@
 	\end{center}
 \end{frame}
 %
+\begin{frame}{Testprogramm (1)}
+	\begin{figure}
+		\centering
+		\scalebox{0.73}{
+			\begin{minipage}{1.0\linewidth}
+				\lstinputlisting[language=Java]{code/Program.java}
+			\end{minipage}
+		}
+	\end{figure}
+\end{frame}
+%
+\begin{frame}{Testprogramm (2)}
+	\begin{figure}
+		\centering
+		\scalebox{1}{
+			\begin{minipage}{1.0\linewidth}
+				\lstinputlisting[language=Java]{code/Language.java}
+			\end{minipage}
+		}
+	\end{figure}
+\end{frame}
+%
+\begin{frame}{Test-Suite}
+	\begin{figure}
+		\centering
+		\scalebox{0.75}{
+			\begin{minipage}{1.0\linewidth}
+				\lstinputlisting[language=Java]{code/ProgramTest.java}
+			\end{minipage}
+		}
+	\end{figure}
+\end{frame}
+%
+\begin{frame}{Resultat}
+	Astor findet keinen Bugfix...
+	\begin{figure}
+		\includegraphics[width=0.7\textwidth]{img/facepalm.jpg}
+	\end{figure}
+\end{frame}
+%
+\begin{frame}{}
+	\begin{itemize}
+		\item Haben wir etwas falsch gemacht?
+		\item Was müsste GenProg tun, um das Programm zu reparieren?
+	\end{itemize}
+\end{frame}
+%
+\begin{frame}{Analyse (Original)}
+	\begin{figure}
+		\centering
+		\scalebox{1}{
+			\begin{minipage}{1.0\linewidth}
+				\lstinputlisting[language=Java, firstline=1, lastline=11]{code/repair_steps.java}
+			\end{minipage}
+		}
+	\end{figure}
+\end{frame}
+%
+\begin{frame}{Analyse (Schritt 1)}
+	\begin{figure}
+		\centering
+		\scalebox{1}{
+			\begin{minipage}{1.0\linewidth}
+				\lstinputlisting[language=Java, firstline=13, lastline=23]{code/repair_steps.java}
+			\end{minipage}
+		}
+	\end{figure}
+\end{frame}
+%
+\begin{frame}{Analyse (Schritt 2 - Fix)}
+	\begin{figure}
+		\centering
+		\scalebox{0.9}{
+			\begin{minipage}{1.0\linewidth}
+				\lstinputlisting[language=Java, firstline=25, lastline=40]{code/repair_steps.java}
+			\end{minipage}
+		}
+	\end{figure}
+\end{frame}
+%
 \begin{frame}{}
 	\begin{itemizes}{1em}
-		\item 
-		\item Philipp baut hier noch Folien
-		\item 
+		\item Nach einer intensiven Debug-Session finden wir heraus...
+		\item ... das Problem liegt in der Methode \textbf{VariableSolver.fitInContext()}
 	\end{itemizes}
 \end{frame}
 %
+\begin{frame}{Problem}
+\begin{figure}
+	\centering
+	\scalebox{0.9}{
+		\begin{minipage}{1.0\linewidth}
+			\begin{algorithm}[H]
+				\SetKwInOut{Input}{Input}
+				\SetKwInOut{Output}{Output}
+				
+				\Input{Set of context variables $varContext$.}
+				\Input{Statement $stmt$.}
+				
+				$varAccesses = collectVariableAccesses(stmt)$\;
+				
+				\ForAll{$access \in varAccesses$}
+				{
+					$contextIndependend = stmt.contains(access.getDeclaration())$ \textbf{$\vee$} $access.isPublicAndStatic()$\;
+					\If{$\neg contextIndependend \wedge \neg varContext.contains(access)$}
+					{
+						\Return false\;
+					}
+				}
+				
+				\Return true\;
+				
+				\caption{VariableResolver.fitInContext()}
+			\end{algorithm}
+		\end{minipage}
+	}
+\end{figure}
+\end{frame}
+%
+\begin{frame}{Problem}
+	\begin{center}
+		\huge{Zu kontextunabhängigen Variablen gehören auch enum-Referenzen!}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Fix}
+	\begin{figure}
+		\centering
+		\scalebox{0.9}{
+			\begin{minipage}{1.0\linewidth}
+				\begin{algorithm}[H]
+					\SetKwInOut{Input}{Input}
+					\SetKwInOut{Output}{Output}
+					
+					\Input{Set of context variables $varContext$.}
+					\Input{Statement $stmt$.}
+					
+					$varAccesses = collectVariableAccesses(stmt)$\;
+					
+					\ForAll{$access \in varAccesses$}
+					{
+						$contextIndependend = stmt.contains(access.getDeclaration())$ \textbf{$\vee$} $access.isPublicAndStatic()$ \alert{\textbf{$\vee$} $access.isPublicEnumReference()$} \;
+					
+						\If{$\neg contextIndependend \wedge \neg varContext.contains(access)$}
+						{
+							\Return false\;
+						}
+					}
+					
+					\Return true\;
+					
+					\caption{VariableResolver.fitInContext()}
+				\end{algorithm}
+			\end{minipage}
+		}
+	\end{figure}
+\end{frame}
+%
+\begin{frame}{Resultat nach Fix}
+	\begin{figure}
+		\centering
+		\scalebox{0.45}{
+			\begin{minipage}{1.0\linewidth}
+				\lstinputlisting[language=Java]{code/fixed.java}
+			\end{minipage}
+		}
+	\end{figure}
+\end{frame}
