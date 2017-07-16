@@ -1,0 +1,112 @@
+\section{Ergebnisse}
+%
+\begin{frame}{}
+	\begin{center}
+		\huge{Ergebnisse}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Die Testmenge}
+	\begin{itemizes}{1em}
+		\item Als Testmenge wurden die Fehler von defects4j verwendet.
+		\item 395 Test stehen zur Verfügung in folgenden Bereichen
+		\begin{itemizes}{0.3em}
+			\item JFreechart (26)
+			\item Closure compiler (133)
+			\item Apache commons-lang (65)
+			\item Apache commons-math (106)
+			\item Mockito (38)
+			\item Joda-Time (27)
+		\end{itemizes}
+	\end{itemizes}
+\end{frame}
+%
+\begin{frame}{}
+	\bildc{1}{img/astorDef4j_results.png}{Entnommen aus \cite{MM16}}
+\end{frame}
+%
+\begin{frame}{Erste Überlegung}
+	\begin{itemizes}{1em}
+		\item Anwendung auf das Paket Lang
+		\item Höchste Wahrscheinlichkeit einen Fix zu finden
+		\item Leider nicht erfolgreich gewesen
+	\end{itemizes}
+\end{frame}
+%
+\begin{frame}{Nächste Überlegung}
+\begin{itemizes}{1em}
+	\item Durchsuchen aller Fehlerhaften Programme
+	\item Überprüfung der fehlerhaften Testfälle
+	\item Kein Testfall gefunden, welcher den Patch validieren würde
+\end{itemizes}
+\end{frame}
+%
+\begin{frame}{Validierung}
+\begin{itemizes}{1em}
+	\item Entwicklung eines eigenen Testprogramms
+	\item Welches den Patch validieren kann
+\end{itemizes}
+\end{frame}
+%
+\begin{frame}[fragile=singleslide]{}
+\begin{minipage}{27em}
+	\begin{lstlisting}[
+	%	mathescape=true,
+	escapeinside={(*}{*)}, 
+	language=C,
+	]
+public Language getLanguage(String lang) {
+	if(lang.equals("C"))
+		return Language.C;
+	else if(lang.equals("CPP"))
+		return Language.CPP;
+	else
+		return Language.JAVA;
+}
+	\end{lstlisting}
+\end{minipage}
+\begin{minipage}{27em}
+	\begin{lstlisting}[
+	%	mathescape=true,
+	escapeinside={(*}{*)}, 
+	language=C,
+	]
+public Language getLanguageWorking(String lang) {
+	if(lang.equals("C"))
+		return Language.C;
+	else if(lang.equals("CPP"))
+		return Language.CPP;
+	else if(lang.equals("JAVA"))
+		return Language.JAVA;
+	else
+		return Language.PYTHON;
+}
+	\end{lstlisting}
+\end{minipage}
+\end{frame}
+%
+\begin{frame}[fragile=singleslide]{Von Astor generierter Patch}
+	\begin{lstlisting}[
+	%	mathescape=true,
+	escapeinside={(*}{*)}, 
+	language=C,
+	]
+	public Language getLanguage(String lang) {
+		if(lang.equals("C"))
+			return Language.C;
+		else if(lang.equals("CPP"))
+			return Language.CPP;
+		else if(lang.equals("JAVA"))
+			return Language.JAVA;
+		else
+			return Language.PYTHON;
+	}
+	\end{lstlisting}
+\end{frame}
+%
+\begin{frame}{Quellen}
+	\bibliography{ref}
+	\nocite{*}
+	\bibliographystyle{alpha}
+\end{frame}
+%

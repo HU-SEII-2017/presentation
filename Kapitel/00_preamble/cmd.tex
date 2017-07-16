@@ -1,0 +1,14 @@
+\newenvironment{itemizes}[1]{
+	\begin{itemize}\setlength{\itemsep}{#1}		
+	}{
+	\end{itemize}
+	}
+	
+\newcommand{\bildc}[3]{\begin{center}\includegraphics[width=#1\textwidth]{#2}\\\tiny{#3}\end{center}}
+\newcommand{\bild}[3]{\includegraphics[width=#1\textwidth]{#2}\\\tiny{#3}}
+
+\newenvironment{enumerates}[1]{
+	\begin{enumerate}\setlength{\itemsep}{#1}		
+	}{
+\end{enumerate}
+}

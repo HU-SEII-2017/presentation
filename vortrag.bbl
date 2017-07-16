@@ -1,0 +1,13 @@
+\begin{thebibliography}{MM16}
+
+\bibitem[JJE14]{JJE14}
+R.~Just, D.~Jalali, and M.~D. Ernst.
+\newblock Defects4j: A database of existing faults to enable controlled testing
+  studies for java programs, 2014.
+
+\bibitem[MM16]{MM16}
+M.~Martines and M.~Monperrus.
+\newblock {\em ASTOR: A Program Repair Library for Java}.
+\newblock 2016.
+
+\end{thebibliography}
