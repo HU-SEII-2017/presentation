@@ -90,16 +90,16 @@ public Language getLanguageWorking(String lang) {
 	escapeinside={(*}{*)}, 
 	language=C,
 	]
-	public Language getLanguage(String lang) {
-		if(lang.equals("C"))
-			return Language.C;
-		else if(lang.equals("CPP"))
-			return Language.CPP;
-		else if(lang.equals("JAVA"))
-			return Language.JAVA;
+if (lang.equals("C"))
+	return com.astortest.Language.C;
+else
+	if (lang.equals("CPP"))
+		return com.astortest.Language.CPP;
+	else
+		if (lang.equals("JAVA"))
+			return com.astortest.Language.JAVA;
 		else
-			return Language.PYTHON;
-	}
+			return com.astortest.Language.PYTHON;	
 	\end{lstlisting}
 \end{frame}
 %

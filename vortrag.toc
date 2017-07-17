@@ -1,4 +1,4 @@
-\beamer@endinputifotherversion {3.36pt}
+\beamer@endinputifotherversion {3.33pt}
 \select@language {german}
 \beamer@sectionintoc {3}{Idee}{3}{0}{1}
 \beamer@sectionintoc {4}{Astor \discretionary {-}{}{}- GenProg}{8}{0}{2}
