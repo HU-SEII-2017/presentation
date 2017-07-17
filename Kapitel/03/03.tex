@@ -108,7 +108,7 @@
 				
 				\ForAll{$access \in varAccesses$}
 				{
-					$contextIndependend = stmt.contains(access.getDeclaration())$ \textbf{$\vee$} $access.isPublicAndStatic()$\;
+					$contextIndependend = stmt.contains(access.getDeclaration()$ \textbf{$\vee$} $access.isStatic()$\;
 					\If{$\neg contextIndependend \wedge \neg varContext.contains(access)$}
 					{
 						\Return false\;
@@ -146,7 +146,7 @@
 					
 					\ForAll{$access \in varAccesses$}
 					{
-						$contextIndependend = stmt.contains(access.getDeclaration())$ \textbf{$\vee$} $access.isPublicAndStatic()$ \alert{\textbf{$\vee$} $access.isPublicEnumReference()$} \;
+						$contextIndependend = stmt.contains(access.getDeclaration()$ \textbf{$\vee$} $access.isStatic()$ \alert{\textbf{$\vee$} $access.isEnumReference()$} \;
 					
 						\If{$\neg contextIndependend \wedge \neg varContext.contains(access)$}
 						{
